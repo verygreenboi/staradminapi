@@ -62,7 +62,7 @@ services:
       - LETSENCRYPT_TEST=true
 
 networks:
-  backend:
+  web:
     driver: "bridge"
   proxy-tier:
     external:
