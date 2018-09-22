@@ -7,8 +7,17 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="vendors/css/vendor.bundle.addons.css">
 </head>
 <body>
   <app-root></app-root>
+  <script src="assets/js/parse.min.js"></script>
+  <script>
+    Parse.initialize('PwYxMbm5w2ztP5EKIx1bqt5HZIYMoHFy3b7xhDKF');
+    Parse.serverURL = 'https://star-admin-api.herokuapp.com/v1';
+  </script>
 </body>
 </html>

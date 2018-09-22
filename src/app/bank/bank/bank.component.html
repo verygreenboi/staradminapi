@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-12" *ngFor="let alert of alerts">
+    <alert [type]="alert.type" [dismissible]="alert.dismissible" [dismissOnTimeout]="alert.timeout">{{
+      alert.msg }}</alert>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-7 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Edit Bank</h4>
+        <form [formGroup]="bankFromGroup" (ngSubmit)="submit()">
+          <div class="form-group">
+            <label>Bank Title</label>
+            <input type="text" formControlName="title" class="form-control form-control-lg">
+            <p class="text-danger" *ngIf="bankFromGroup.controls.title.errors?.blacklistWords">Title contains a
+              forbidden word.</p>
+          </div>
+          <div class="form-group">
+            <label>Bank Number</label>
+            <input type="text" formControlName="bkNum" disabled class="form-control form-control-lg">
+          </div>
+          <div class="form-group">
+            <label>Bank Redirect Number</label>
+            <input type="text" formControlName="reNum" class="form-control form-control-lg">
+          </div>
+          <button [disabled]="bankFromGroup.invalid" class="btn btn-success mr-2">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-5 grid-margin">
+    <div class="card card-weather">
+      <div class="card-body">
+        <h2 class="card-title text-primary mb-5">Available Credits</h2>
+        <div class="wrapper d-flex justify-content-between">
+          <div class="side-left">
+            <p class="display-3 mb-4 font-weight-light">C{{bank.credit}}</p>
+            <a href="#" class="btn btn-block btn-success">Recharge</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

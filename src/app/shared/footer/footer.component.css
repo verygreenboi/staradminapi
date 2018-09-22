@@ -1,0 +1,18 @@
+/* Footer */
+.footer {
+  background: #f2f8f9;
+  padding: 20px 1rem;
+  transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -webkit-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  border-top: 1px solid #f2f2f2;
+  font-size: calc(13px - 0.05rem);
+  font-family: "Poppins", sans-serif; }
+  .footer a {
+    color: #00ce68;
+    font-size: inherit; }
+  @media (max-width: 991px) {
+    .footer {
+      margin-left: 0;
+      width: 100%; } }

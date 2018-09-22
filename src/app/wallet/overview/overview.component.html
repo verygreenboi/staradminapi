@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-md-12" *ngFor="let alert of alerts">
+    <alert [type]="alert.type" [dismissible]="alert.dismissible" [dismissOnTimeout]="alert.timeout">{{
+      alert.msg }}</alert>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-7 grid-margin">
+    <form [formGroup]="loadWalletForm" (ngSubmit)="submit()">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Recharge Wallet</h4>
+          <div class="form-group">
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Choose Amount</label>
+                <select formControlName="amount" class="form-control form-control-lg" id="exampleFormControlSelect1">
+                  <option value=20>C20</option>
+                  <option value=50>C50</option>
+                  <option value=100>C100</option>
+                  <option value=200>C200</option>
+                  <option value=500>C500</option>
+                </select>
+              </div>
+              <button class="btn btn-success mr-2">Submit</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-lg-5 grid-margin">
+    <div class="card card-weather">
+      <div class="card-body">
+        <h2 class="card-title text-primary mb-5">Available Credits</h2>
+        <div class="wrapper d-flex justify-content-between">
+          <div class="side-left">
+            <p class="mb-2">You need at least C20 to create a new Bank.</p>
+            <p class="display-3 mb-4 font-weight-light">C{{credits}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

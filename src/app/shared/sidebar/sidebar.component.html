@@ -1,0 +1,69 @@
+<!-- partial:partials/_sidebar.html -->
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+  <ul class="nav">
+    <li class="nav-item nav-profile" *ngIf="hasUser">
+      <div class="nav-link">
+        <div class="user-wrapper">
+          <div class="profile-image">
+            <img src="assets/images/faces/face1.jpg" alt="profile image">
+          </div>
+          <div class="text-wrapper">
+            <p class="profile-name">{{email}}</p>
+          </div>
+        </div>
+        <a class="btn btn-outline-success btn-block" [routerLink]="['/accounts', 'new']">New Account
+          <i class="mdi mdi-plus"></i>
+        </a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/']" routerLinkActive="router-link-active">
+        <i class="menu-icon mdi mdi-television"></i>
+        <span class="menu-title">Dashboard</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/wallet']" routerLinkActive="router-link-active">
+        <i class="menu-icon mdi mdi-credit-card-plus"></i>
+        <span class="menu-title">Load Wallet</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" (click)="toggleAccounts()"
+        aria-expanded="false" aria-controls="auth">
+        <i class="menu-icon mdi mdi-restart"></i>
+        <span class="menu-title">Accounts</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="auth" [collapse]="isAccountsCollapsed">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/accounts']" routerLinkActive="router-link-active" >All Accounts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/accounts', 'new']">New Account</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" (click)="toggleBanks()" aria-expanded="false"
+        aria-controls="ui-basic">
+        <i class="menu-icon mdi mdi-content-copy"></i>
+        <span class="menu-title">Banks</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ui-basic" [collapse]="isBanksCollapsed">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/banks']">All Banks</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/banks', 'new']">New Bank</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</nav>
+<!-- partial -->

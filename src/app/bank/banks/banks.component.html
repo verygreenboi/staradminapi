@@ -1,0 +1,74 @@
+<div class="col-lg-12 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Banks</h4>
+      <a [routerLink]="['new']" class="card-description btn btn-sm">
+        Add New Bank
+        <code>+</code>
+      </a>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>
+                Title
+              </th>
+              <th>
+                Number
+              </th>
+              <th>
+                Redirect Number
+              </th>
+              <th>
+                Available Credits
+              </th>
+              <th>
+                Active
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let bank of banks">
+              <td class="py-1">
+                {{bank.title}}
+              </td>
+              <td>
+                {{bank.sim}}
+              </td>
+              <td>
+                {{bank.redirect}}
+              </td>
+              <td>
+                C {{bank.credit}}
+              </td>
+              <td>
+                {{bank.isActive}}
+              </td>
+              <td>
+                <a [routerLink]="['bank', bank.objectId]">View</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <tr>
+    <th>
+      Title
+    </th>
+    <th>
+      Number
+    </th>
+    <th>
+      Redirect Number
+    </th>
+    <th>
+      Available Credits
+    </th>
+    <th>
+      Status
+    </th>
+  </tr> -->

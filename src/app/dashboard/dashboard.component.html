@@ -1,0 +1,145 @@
+<div class="row">
+  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+    <div class="card card-statistics">
+      <div class="card-body">
+        <div class="clearfix">
+          <div class="float-left">
+            <i class="mdi mdi-cube text-danger icon-lg"></i>
+          </div>
+          <div class="float-right">
+            <p class="mb-0 text-right">Credits</p>
+            <div class="fluid-container">
+              <h3 class="font-weight-medium text-right mb-0">{{dashboardData.credit}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+    <div class="card card-statistics">
+      <div class="card-body">
+        <div class="clearfix">
+          <div class="float-left">
+            <i class="mdi mdi-phone text-warning icon-lg"></i>
+          </div>
+          <div class="float-right">
+            <p class="mb-0 text-right">Calls</p>
+            <div class="fluid-container">
+              <h3 class="font-weight-medium text-right mb-0">{{dashboardData.calls}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+    <div class="card card-statistics">
+      <div class="card-body">
+        <div class="clearfix">
+          <div class="float-left">
+            <i class="mdi mdi-poll-box text-success icon-lg"></i>
+          </div>
+          <div class="float-right">
+            <p class="mb-0 text-right">Banks</p>
+            <div class="fluid-container">
+              <h3 class="font-weight-medium text-right mb-0">{{dashboardData.bank}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+    <div class="card card-statistics">
+      <div class="card-body">
+        <div class="clearfix">
+          <div class="float-left">
+            <i class="mdi mdi-account-location text-info icon-lg"></i>
+          </div>
+          <div class="float-right">
+            <p class="mb-0 text-right">Accounts</p>
+            <div class="fluid-container">
+              <h3 class="font-weight-medium text-right mb-0">{{dashboardData.account}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12 grid-margin">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title mb-4">Recent Activities</h5>
+        <div class="fluid-container">
+          <div *ngFor="let activity of dashboardData.activities" class="row ticket-card mt-3 pb-2 border-bottom pb-3 mb-3">
+            <ng-container *ngIf="activity.type == 0">
+              <ng-container *ngTemplateOutlet="calls; context:activity"></ng-container>
+            </ng-container>
+            <ng-container *ngIf="activity.type == 1">
+              <ng-container *ngTemplateOutlet="deduction; context:activity"></ng-container>
+            </ng-container>
+            <ng-container *ngIf="activity.type == 2">
+              <ng-container *ngTemplateOutlet="recharge; context:activity"></ng-container>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #calls let-call="call" let-bank="bank">
+  <div class="col-md-1">
+    <i class="mdi mdi-call-received text-warning icon-lg"></i>
+  </div>
+  <div class="ticket-details col-md-9">
+    <div class="d-flex">
+      <p class="text-dark font-weight-semibold mr-2 mb-0 no-wrap">Call to {{bank.title}} :</p>
+      <p class="text-primary mr-1 mb-0">[#{{call.objectId}}]</p>
+    </div>
+    <p class="text-gray ellipsis mb-2">
+      Total credits used {{call.costInCredit}}
+    </p>
+    <div class="row text-gray d-md-flex d-none">
+      <div class="col-4 d-flex">
+        <small class="mb-0 mr-2 text-muted text-muted">Call started at :</small>
+        <small class="Last-responded mr-2 mb-0 text-muted text-muted">{{call.callStartedAt | date: 'dd-MM-yyyy'}}</small>
+      </div>
+      <div class="col-4 d-flex" *ngIf="call.callEndedAt !== null">
+        <small class="mb-0 mr-2 text-muted text-muted">Call ended at :</small>
+        <small class="Last-responded mr-2 mb-0 text-muted text-muted">{{call.callEndedAt | date: 'dd-MM-yyyy'}}</small>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #deduction let-amount="amount" let-reason="reason">
+  <div class="col-md-1">
+    <i class="mdi mdi-finance text-danger icon-lg"></i>
+  </div>
+  <div class="ticket-details col-md-9">
+    <div class="d-flex">
+      <p class="text-dark font-weight-semibold mr-2 mb-0 no-wrap">Credit Deduction of {{amount}} credits</p>
+    </div>
+    <p class="text-gray ellipsis mb-2">
+      Reason: {{reason}}
+    </p>
+  </div>
+</ng-template>
+
+<ng-template #recharge let-amount="amount">
+  <div class="col-md-1">
+    <i class="mdi mdi-receipt text-info icon-lg"></i>
+  </div>
+  <div class="ticket-details col-md-9">
+    <div class="d-flex">
+      <p class="text-dark font-weight-semibold mr-2 mb-0 no-wrap">Credit Recharge</p>
+    </div>
+    <p class="text-gray ellipsis mb-2">
+        Reason: Credit recharge of {{amount}} credits.
+      </p>
+  </div>
+</ng-template>
