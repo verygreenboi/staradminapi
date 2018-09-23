@@ -50,7 +50,7 @@ services:
       - nginx-gen
       - nginx
   angular:
-    image: mrsmith9ja/cc-dash:0.0.1
+    image: mrsmith9ja/cc-dash:0.0.2
     networks:
       - proxy-tier
     environment:
