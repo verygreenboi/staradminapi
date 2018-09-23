@@ -13,6 +13,8 @@ services:
       - "/etc/nginx/conf.d"
       - "/etc/nginx/vhost.d"
       - "/usr/share/nginx/html"
+      - "./dist/client/vendors:/usr/share/nginx/html/vendors"
+      - "./dist/client/assets:/usr/share/nginx/html/assets"
       - "./config/proxy/certs:/etc/nginx/certs:ro"
     networks:
       - web
